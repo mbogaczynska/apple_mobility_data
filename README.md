@@ -7,6 +7,9 @@ The aim of this project is to analyze the mobility data made avaiable by Apple.
 That data is avaiable from the following URL:
 https://covid19-static.cdn-apple.com/mobility
 
+Eventually, it will also include use of tidyverse packages to visualize the 
+dataset.
+
 ### Change log
 
 * 2020-09-17: Initialize git repository for the project and commit all files 
