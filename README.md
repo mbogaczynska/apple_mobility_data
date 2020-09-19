@@ -9,6 +9,7 @@ https://covid19-static.cdn-apple.com/mobility
 
 ### Change log
 
+* 2020-09-17: Initialize git repository
 * 2020-09-12: A new version of the data file was downloaded, and I
 also worked to refractor the code to be more general and to allow for any
 state to be subset from the larger file. 
