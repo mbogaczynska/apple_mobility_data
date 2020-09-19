@@ -7,7 +7,8 @@ The aim of this project is to analyze the mobility data made avaiable by Apple.
 That data is avaiable from the following URL:
 https://covid19-static.cdn-apple.com/mobility
 
-Eventually, it will also include use of tidyverse packages to visualize the 
+It currently uses dplyr to work with some of the tabular data.
+Eventually, it will also include use of ggplot2 to visualize the 
 dataset.
 
 ### Change log
