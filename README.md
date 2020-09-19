@@ -11,7 +11,9 @@ Eventually, it will also include use of tidyverse packages to visualize the
 dataset.
 
 ### Change log
-
+* 2020-09-19: A new version of the data file was downloaded. Added second 
+script to use dplyr to tally up the count of cities and counties in a given
+state that have data from the different transportation types
 * 2020-09-17: Initialize git repository for the project and commit all files 
 into the repository
 * 2020-09-12: A new version of the data file was downloaded, and I
