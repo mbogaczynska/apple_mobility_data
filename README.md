@@ -12,6 +12,8 @@ Eventually, it will also include use of ggplot2 to visualize the
 dataset.
 
 ### Change log
+* 2020-09-20: I new script was written for reading any subsetted state and tally
+up the rows grouped by city/county nd transportation type. 
 * 2020-09-19: A new version of the data file was downloaded. Added second 
 script to use dplyr to tally up the count of cities and counties in a given
 state that have data from the different transportation types
