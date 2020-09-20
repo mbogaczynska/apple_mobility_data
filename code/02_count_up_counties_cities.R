@@ -14,16 +14,9 @@
 # Load functions
 source("code/functions/tally_up_count_cities_counties_by_transportation.R")
 
-# load in the dataset from the previous script
-input_file_name <- "output/applemobilitytrends-2020-09-11_California.csv"
-state_data <- read.csv(input_file_name)
 
-# starting off with dplyr chains
-count_cities_counties_by_type <- state_data %>%
-  select(geo_type, region, transportation_type) %>%
-  group_by(geo_type, transportation_type) %>%
-  tally()
 
-# write out the result of the dplyr chain
-write.csv(count_cities_counties_by_type,
-          "output/california_cities_counties_counts.csv")
+# test out the use of the function
+tally_up_count_cities_counties_by_transportation(
+  input_file_name = "data/raw_data/applemobilitytrends-2020-09-17.csv.csv",
+  state_to_subset = "Alaska")
