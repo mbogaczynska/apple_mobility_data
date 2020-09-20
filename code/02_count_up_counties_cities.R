@@ -12,11 +12,10 @@
 # state csv files that were already subsetted.
 
 # Load functions
-source("code/functions/tally_up_count_cities_counties_by_transportation.R")
-
-
+source("code/functions/count_up_counties_cities.R")
 
 # test out the use of the function
-tally_up_count_cities_counties_by_transportation(
-  input_file_name = "data/raw_data/applemobilitytrends-2020-09-17.csv.csv",
+count_up_counties_cities(
+  input_file_name = "data/raw_data/applemobilitytrends-2020-09-11.csv",
   state_to_subset = "Alaska")
+

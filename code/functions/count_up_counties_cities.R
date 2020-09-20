@@ -12,7 +12,7 @@
 # that is subsetted
 
 count_up_counties_cities <- function(input_file_name,
-                                          state_to_subset) {
+                                     count_up_counties_cities) {
   # load in the dataset from the previous script
   input_file_name <- "output/applemobilitytrends-2020-09-11_California.csv"
   state_data <- read.csv(input_file_name)
