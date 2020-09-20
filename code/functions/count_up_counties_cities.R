@@ -11,10 +11,10 @@
 # This should also create an output CSV file that is named based on the state
 # that is subsetted
 
-count_up_counties_cities <- function(input_file_name,
-                                     count_up_counties_cities) {
+count_up_counties_cities <- function(
+  input_file_name, count_cities_counties_by_type) {
   # load in the dataset from the previous script
-  input_file_name <- "output/applemobilitytrends-2020-09-11_California.csv"
+  input_file_name <- "output/applemobilitytrends-2020-09-11_Ohio.csv"
   state_data <- read.csv(input_file_name)
 
   # starting off with dplyr chains
@@ -22,11 +22,6 @@ count_up_counties_cities <- function(input_file_name,
     select(geo_type, region, transportation_type) %>%
     group_by(geo_type, transportation_type) %>%
     tally()
-
-  # check that the subsetted data actually has data in it
-  if (nrow(count_cities_counties_by_type) == 0) {
-    stop("ERROR, no rows matching given state name. Did you make a typo?")
-  }
 
   # save the state data to a new csv file in the output directory
   write.csv(count_cities_counties_by_type, file = paste0("output/",
@@ -36,4 +31,3 @@ count_up_counties_cities <- function(input_file_name,
                                       count_cities_counties_by_type,
                                       ".csv"))
 }
-
