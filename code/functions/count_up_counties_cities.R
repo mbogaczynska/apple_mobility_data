@@ -11,8 +11,8 @@
 # This should also create an output CSV file that is named based on the state
 # that is subsetted
 
-count_up_counties_cities <- function(
-  input_file_name, count_cities_counties_by_type) {
+count_up_counties_cities <- function (input_file_name)
+  {
   # load in the dataset from the previous script
   input_file_name <- "output/applemobilitytrends-2020-09-11_Ohio.csv"
   state_data <- read.csv(input_file_name)
@@ -28,6 +28,6 @@ count_up_counties_cities <- function(
                                       tools::file_path_sans_ext(
                                         basename(input_file_name)),
                                       "_",
-                                      count_cities_counties_by_type,
+                                      (state_data),
                                       ".csv"))
 }
