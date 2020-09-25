@@ -9,24 +9,12 @@
 # load the package "dplyr"
 library("dplyr")
 
-# we would like to get a count of the number of cities and the number of
-# counties in a given state that have driving mobility data.
-# The input to this will be the output for previous script namely the
-# state csv files that were already subsetted.
+# load the function
+source("code/functions/count_up_counties_cities_transportation_type.R")
 
-# load in the dataset from the previous script
-input_file_name <- "output/applemobilitytrends-2020-09-11_California.csv"
-state_data <- read.csv(input_file_name)
-
-# starting off with dplyr chains
-count_of_cities_counties_by_type <- state_data %>%
-  select(geo_type, region, transportation_type) %>%
-  filter(transportation_type == "driving") %>%
-  group_by(geo_type) %>%
-  tally()
-
-# write out the results of dplyr chain
-
-write.csv(count_of_cities_counties_by_type,
-          "output/california_cities_counties_counts.csv")
-
+# use the function as a for loop
+for (state_to_subset in c("Ohio", "Arizona", "Nevada", "Alaska", "Minnesota")) {
+  subset_mobility_data_to_state(
+    input_file_name = "data/raw_data/applemobilitytrends-2020-09-17.csv",
+    state_to_subset)
+}
