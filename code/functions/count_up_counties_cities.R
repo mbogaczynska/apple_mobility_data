@@ -24,7 +24,7 @@ count_up_counties_cities <- function (input_file_name)
     tally()
 
   # save the state data to a new csv file in the output directory
-  write.csv(count_cities_counties_by_type, file = paste0("output/",
+  write_csv(count_cities_counties_by_type, path = paste0("output/subsetted_states_tallied/",
                                       tools::file_path_sans_ext(
                                         basename(input_file_name)),
                                       "_",
