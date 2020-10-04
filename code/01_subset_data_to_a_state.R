@@ -19,6 +19,6 @@ for (state_to_subset in c("Ohio", "Arizona", "Nevada", "Alaska", "Minnesota")){
 
 # test out the use of the function
 subset_mobility_data_to_state(
-  input_file_name = "data/raw_data/applemobilitytrends-2020-09-11.csv",
-  state_to_subset = "California")
+  input_file_name = "data/raw_data/applemobilitytrends-2020-09-17.csv",
+  state_to_subset = "Alaska")
 
