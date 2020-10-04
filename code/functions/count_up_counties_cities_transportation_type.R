@@ -8,7 +8,7 @@
 # mgbogaczynska@usfca.edu
 
 # Create a function that will tally up the type of transportation in both the
-# cities and coutnies of a previously subsetted state. This should then create
+# cities and counties of a previously subsetted state. This should then create
 # an output csv file that's name is based on the state subsetted and
 # transportation
 
