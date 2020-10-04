@@ -14,7 +14,7 @@
 count_up_counties_cities <- function (input_file_name)
   {
   # load in the dataset from the previous script
-  input_file_name <- "output/applemobilitytrends-2020-09-11_Ohio.csv"
+  input_file_name <- "output/applemobilitytrends-2020-09-17_Alaska.csv"
   state_data <- read.csv(input_file_name)
 
   # starting off with dplyr chains
