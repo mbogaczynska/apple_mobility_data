@@ -17,7 +17,7 @@ library("dplyr")
 
 count_up_cities_counties <- function(input_file_name) {
   # read in the dataset from previous script
-  state_data_tally <- read.csv(input_file_name)
+  state_data_tally <- read_csv(input_file_name)
 
   # check to see that there is data in the state_data_tally
   if (nrow(state_data_tally) == 0) {
@@ -36,7 +36,7 @@ count_up_cities_counties <- function(input_file_name) {
   if (ncol(count_cities_counties_by_type) == 0) {
     stop("ERROR, no transportation data in file, check state subsetted")
   }
-  write.csv(count_cities_counties_by_type, file = paste0("output/subsetted_states_tallied/",
+  write_csv(count_cities_counties_by_type, path = paste0("output/subsetted_states_tallied/",
                                                          tools::file_path_sans_ext(
                                                            basename(input_file_name)),
                                                          "_",
