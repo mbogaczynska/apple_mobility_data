@@ -32,10 +32,10 @@ count_up_cities_counties <- function(input_file_name) {
   if (ncol(count_cities_counties_by_type) == 0) {
     stop("ERROR, no transportation data in file, check state subsetted")
   }
-  readr::write_csv(count_cities_counties_by_type, path = paste0("output/",
-                                                                "subsetted_state_tallied/",
-                                                                tools::file_path_sans_ext(
-                                                                  basename(input_file_name)),
+  readr::write_csv(count_cities_counties_by_type, path = paste0("output/subsetted_states_tallied/",
+                                                            tools::file_path_sans_ext(
+                                                                  basename(
+                                                                    input_file_name)),
                                                                 "_",
                                                                 "state_data_tally",
                                                                 ".csv"))
