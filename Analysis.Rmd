@@ -5,118 +5,98 @@ date: "9/27/2020"
 output: html_document
 bibliography: references.bib 
 ---
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 ```
-
 ## Setup
 ```{r set-parameters}
 # set the state to work with
 state_to_analyze <- "California"
-
-# sanitizing the state name for output file
-state_no_spaces <- gsub(state_to_analyze, 
+# if a state has a space in it we need to sanitize it
+# sanitizing the state name for output files
+state_no_spaces <- gsub(state_to_analyze,
                         pattern = " ",
                         replacement = "_")
-
 # set the name of the global data file to use
-global_file_to_process <- "data/raw_data/applemobilitytrends-2020-09-17.csv"
-
-# extract core name for output file name use
-core_name <- tools::file_path_sans_ext(basename(global_file_to_process))
+global_file_name_to_process <- "data/raw_data/applemobilitytrends-2020-10-03.csv"
+#extract out the core name for output file naming
+core_name <- tools::file_path_sans_ext(basename(global_file_name_to_process))
 ```
-
 ```{r load-packages-functions}
-# to load the packages needed
+# load the packages needed
 library("dplyr")
 library("readr")
 library("ggplot2")
 library("tidyr")
 library("lubridate")
 library("devtools")
-
 # load the functions needed
 source("code/functions/subset_mobility_data_to_state.R")
 source("code/functions/count_up_counties_cities_transportation_type.R")
-source("code/functions/count_up_counties_cities.R")
 source("code/functions/convert_mobility_wide_to_long.R")
-
 ```
+## Background and Objectives (Project Description)
+This rmarkdown file will use the packages `ggplot2` [@ggplot2] and `dplyr`
+[@dplyr] to analyze the Apple mobility data from the time before the Covid-19
+pandemic, through the initial shutdowns, and the continuing changes over the
+course of the year.
+The goal will be to create a subset to a particular state, tally up the number
+of cities and counties in that state with mobility data, and then to make
+several plots to visualize those data subsets.
+The state that this document will analyze is `r state_to_analyze`
 
-## Background and objectives
-
-This rmarkdown file will use `ggplot2` [@ggplot2] and `dplyr` [@dplyr]
-packages to analyze the Apple maps mobility data from the time before the COVID-19
-pandemic through the initial shutdown and the continuing changes over the course of 
-the year. 
-
-The goal will be to create a subset to a particular state, tally up the number of
-cities and counties in that state with mobility data, and then to make several plots
-to visualize those data subsets.
-
-The state that this document will analyze is `r state_to_analyze`. 
-
-## Data Processing
+## Data Processing (Subsetting Data)
+# three functions to load in
 
 ```{r subset-state}
-
 # subset out to the chosen state using the variables set above
 state_subset <- subset_mobility_data_to_state(
-  input_file_name = global_file_to_process,
+  input_file_name = global_file_name_to_process,
   state_to_subset = state_to_analyze)
-
 ```
-
-```{r make-the-subset-long}
-# convert the subsetted state from wide to long format
+```{r make-subset-long}
+# convert the subsetted data from wide to long format
 long_subset <- convert_mobility_wide_to_long(
-  file_name_in = paste0("output/subsetted_states_wide/",
+  input_file_name = paste0("output/subsetted_states_wide/",
                         core_name,
                         "_",
                         state_no_spaces,
                         ".csv"))
-
 ```
 
-```{r tallied_subset}
-# tally up the numbers of cities and counties in the state that have mobility
+```{r tallied-subset}
+# tally up the number of cities and counties in the state that have mobility
 # data available
-tallied_subset <- count_up_cities_counties_by_type(
-  file_name_in = paste0("output/subsetted_states_wide/",
+tallied_subset <- count_up_cities_counties(
+  input_file_name = paste0("output/subsetted_states_wide/",
                         core_name,
                         "_",
                         state_no_spaces,
                         ".csv"))
-
 ```
 
 ## Figures
 ```{r plot-tallied}
-# create a grouped barplot of the tallied data to include in the knitted 
-# document, and save the figure to the output/figures directory as png
+# create a grouped barplot of the tallied data to include in the knitted
+# document, and save that figure to the output/figures directory as a png
 tallied_plot <- ggplot(data = tallied_subset,
                        aes(x = geo_type,
                            y = n,
-                           fill = tranportation_type)) +
-  geom_col(position = postion_dodge()) +
+                           fill = transportation_type)) +
+  geom_col(position = position_dodge())  +
   labs(title = paste("Number of cities and/or counties in",
                      state_to_analyze,
-                     "with mobility data")
-       x = "Type of area",
-       y = "Number of areas")
+                     "with mobility data"),
+       x = "type of area",
+       y = "number of areas")
 ggsave(plot = tallied_plot,
        filename = paste0("output/figures/",
                          core_name,
-                         "_",
                          state_no_spaces,
                          "_tallied_plot.png"))
-
 tallied_plot
 ```
-
-
-```{r plotting-time-series}
+```{r plot-time-series}
 # produce a line plot of relative driving mobility across the state with date
 # on the x axis and mean relative mobility on the y axis
 timeseries_plot <- long_subset %>%
@@ -130,22 +110,17 @@ timeseries_plot <- long_subset %>%
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
-       y = "Mean relative mobility")
-
+       Y = "Mean relative mobility")
 ggsave(plot = timeseries_plot,
        filename = paste0("output/figures/",
                          core_name,
                          "_",
                          state_no_spaces,
                          "_timeseries_plot.png"))
-
 timeseries_plot
 ```
-
-## Session info
-
+## Session Info
 ```{r session-info}
 devtools::session_info()
 ```
-
 ## Sources Cited
