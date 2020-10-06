@@ -119,6 +119,27 @@ ggsave(plot = timeseries_plot,
                          "_timeseries_plot.png"))
 timeseries_plot
 ```
+```{r box-plot}
+# produce a box plot
+mobility_distribution_plot <- long_subset %>%
+  filter(geo_type == "county") %>%
+  ggplot(aes(x = factor(lubridate::month(lubridate::ymd(date))),
+         y = count)) +
+  geom_boxplot(aes(color = transportation_type)) +
+  labs(title = paste("Statewide mobility distribution by county and month in",
+                     state_to_analyze,
+                     "during COVID-19"),
+       x = "Month",
+       y = "Relative number of requests")
+ggsave(plot = mobility_distribution_plot,
+       filename = paste0("output/figures/",
+                         core_name,
+                         "_",
+                         state_no_spaces,
+                         "_mobility_distribution_plot.png"))
+mobility_distribution_plot
+```
+
 ## Session Info
 ```{r session-info}
 devtools::session_info()
