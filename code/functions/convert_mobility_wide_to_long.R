@@ -14,5 +14,3 @@ convert_mobility_wide_to_long <- function(input_file_name) {
                                                 "_long.csv"))
   return(covid_tidy_data_long)
 }
-
-

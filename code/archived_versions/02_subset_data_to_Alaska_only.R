@@ -10,9 +10,8 @@
 all_covid_data <- read.csv("data/raw_data/applemobilitytrends-2020-08-28.csv")
 
 # subset the dataset to only include rows where the sub.region column has
-# "Alaska" in it. 
-alaska_data <- all_covid_data[all_covid_data$sub.region == "Alaska",]
+# "Alaska" in it.
+alaska_data <- all_covid_data[all_covid_data$sub.region == "Alaska", ]
 
 # save the Alaska data to a new csv file in the output directory
 write.csv(alaska_data, file = "output/alaska_apple_mobility_data.csv")
-
