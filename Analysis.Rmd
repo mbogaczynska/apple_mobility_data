@@ -1,6 +1,7 @@
 ---
 title: "Analysis of COVID-era Apple Mobility Data"
-author: "Marta Bogaczynska"
+author: "Marta Bogaczynska" 
+co-author: "Jacklyn Cherry"
 date: "9/27/2020"
 output: html_document
 bibliography: references.bib 
