@@ -17,30 +17,27 @@ library("dplyr")
 
 count_up_cities_counties <- function(input_file_name) {
   # read in the dataset from previous script
-  state_data_tally <- read_csv(input_file_name)
-
+  state_data_tally <- readr::read_csv(input_file_name)
   # check to see that there is data in the state_data_tally
   if (nrow(state_data_tally) == 0) {
-    stop("ERROR, no rows match given state, did you make a typo?")
+    stop("ERROR, no rows match given state name, check for typo")
   }
-
   # dplyr chain to restrict the dataset to transportation in cities and counties
-  count_of_cities_counties_by_type <- state_data_tally %>%
+  count_cities_counties_by_type <- state_data_tally %>%
     select(geo_type, region, transportation_type) %>%
     group_by(geo_type, transportation_type) %>%
     tally()
-
   # check to see that there is transportation data for cities and counties for
   # a given state
-
   if (ncol(count_cities_counties_by_type) == 0) {
     stop("ERROR, no transportation data in file, check state subsetted")
   }
-  write_csv(count_cities_counties_by_type, path = paste0("output/subsetted_states_tallied/",
-                                                         tools::file_path_sans_ext(
-                                                           basename(input_file_name)),
-                                                         "_",
-                                                         "state_data_tally",
-                                                         ".csv"))
+  readr::write_csv(count_cities_counties_by_type, path = paste0("output/",
+                                                                "subsetted_state_tallied/",
+                                                                tools::file_path_sans_ext(
+                                                                  basename(input_file_name)),
+                                                                "_",
+                                                                "state_data_tally",
+                                                                ".csv"))
+  return(count_cities_counties_by_type)
 }
-
