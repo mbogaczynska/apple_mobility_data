@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 ## Setup
 ```{r set-parameters}
 # set the state to work with
-state_to_analyze <- "Kansas"
+state_to_analyze <- "New York"
 # if a state has a space in it we need to sanitize it
 # sanitizing the state name for output files
 state_no_spaces <- gsub(state_to_analyze,
@@ -111,7 +111,7 @@ timeseries_plot <- long_subset %>%
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
-       Y = "Mean relative mobility")
+       Y = "mean relative mobility")
 ggsave(plot = timeseries_plot,
        filename = paste0("output/figures/",
                          core_name,
