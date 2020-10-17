@@ -26,19 +26,15 @@ subset_mobility_data_to_state <- function(input_file_name,
 
   }
   # check to make sure there are no spaces in the state name
-  state_no_spaces <- gsub(state_to_analyze,
+  state_no_spaces <- gsub(state_to_subset,
                           pattern = " ",
                           replacement = "_")
 
-  # save the state data to a new csv file in the output directory
-  state_no_spaces <- gsub(state_to_analyze,
-                          pattern = " ",
-                          replacement = "_")
   readr::write_csv(state_data, path = paste0("output/subsetted_states_wide/",
                                       tools::file_path_sans_ext(
                                         basename(input_file_name)),
                                       "_",
-                                      state_to_subset,
+                                      state_no_spaces,
                                       ".csv"))
 
   return(state_data)
