@@ -6,8 +6,8 @@ date: "9/27/2020"
 output: html_document
 bibliography: references.bib 
 params: 
-state: "California"
-data: "data/raw_data/applemobilitytrends-2020-10-03.csv" 
+  state: "California"
+  data: "data/raw_data/applemobilitytrends-2020-10-03.csv" 
 ---
 
 ```{r setup, include=FALSE}
