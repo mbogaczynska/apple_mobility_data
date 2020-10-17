@@ -44,7 +44,7 @@ course of the year.
 The goal will be to create a subset to a particular state, tally up the number
 of cities and counties in that state with mobility data, and then to make
 several plots to visualize those data subsets.
-The state that this document will analyze is `r state_to_analyze`
+The state that this document will analyze is `r state_to_analyze`.
 
 ## Data Processing (Subsetting Data)
 # three functions to load in
