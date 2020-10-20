@@ -111,7 +111,7 @@ timeseries_plot <- long_subset %>%
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
-       Y = "mean relative mobility")
+       y = "mean relative mobility")
 ggsave(plot = timeseries_plot,
        filename = paste0("output/figures/",
                          core_name,
