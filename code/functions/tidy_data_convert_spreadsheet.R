@@ -14,6 +14,6 @@ tidy_data_convert_spreadsheet <- function(input_file_name) {
   readr::write_csv(
     covid_tidy_data_long, path = paste0(
       "output/", "subsetted_state_long/", tools::file_path_sans_ext(
-        basename(input_file_name)),"_long.csv"))
+        basename(input_file_name)), "_long.csv"))
   return(covid_tidy_data_long)
 }
