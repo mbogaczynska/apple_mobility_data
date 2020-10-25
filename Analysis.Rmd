@@ -25,7 +25,7 @@ state_no_spaces <- gsub(state_to_analyze,
                         pattern = " ",
                         replacement = "_")
 # set the name of the global data file to use
-global_file_name_to_process <- params$data
+global_file_name_to_process <- params$data 
 
 #extract out the core name for output file naming
 core_name <- tools::file_path_sans_ext(basename(global_file_name_to_process))
