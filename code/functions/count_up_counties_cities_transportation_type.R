@@ -37,6 +37,6 @@ count_up_cities_counties <- function(input_file_name) {
 
       "output/subsetted_states_tallied/", tools::file_path_sans_ext(
         basename(input_file_name)), "_", "state_data_tally", ".csv"))
-  
+
   return(count_cities_counties_by_type)
 }
