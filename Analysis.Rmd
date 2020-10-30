@@ -95,8 +95,8 @@ tallied_plot <- ggplot(data = tallied_subset,
   labs(title = paste("Number of cities and/or counties in",
                      state_to_analyze,
                      "with mobility data"),
-       x = "type of area",
-       y = "number of areas")
+       x = "Type of area",
+       y = "Number of areas")
 ggsave(plot = tallied_plot,
        filename = paste0("output/figures/",
                          core_name,
@@ -118,7 +118,7 @@ timeseries_plot <- long_subset %>%
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
-       Y = "mean relative mobility")
+       y = "mean relative mobility")
 ggsave(plot = timeseries_plot,
        filename = paste0("output/figures/",
                          core_name,
