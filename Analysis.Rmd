@@ -55,6 +55,7 @@ state_subset <- subset_mobility_data_to_state(
   input_file_name = global_file_name_to_process,
   state_to_subset = state_to_analyze)
 ```
+
 ```{r make-subset-long}
 # convert the subsetted data from wide to long format
 long_subset <- convert_mobility_wide_to_long(
