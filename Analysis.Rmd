@@ -13,7 +13,9 @@ params:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 ```
+
 ## Setup
+
 ```{r set-parameters}
 # set the state to work with
 state_to_analyze <- params$state
@@ -27,6 +29,7 @@ global_file_name_to_process <- params$data
 #extract out the core name for output file naming
 core_name <- tools::file_path_sans_ext(basename(global_file_name_to_process))
 ```
+
 ```{r load-packages-functions}
 # load the packages needed
 library("dplyr")
@@ -59,6 +62,7 @@ state_subset <- subset_mobility_data_to_state(
   input_file_name = global_file_name_to_process,
   state_to_subset = state_to_analyze)
 ```
+
 ```{r make-subset-long}
 # convert the subsetted data from wide to long format
 long_subset <- convert_mobility_wide_to_long(
@@ -175,4 +179,5 @@ seq_count_plot
 ```{r session-info}
 devtools::session_info()
 ```
+
 ## Sources Cited
