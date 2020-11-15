@@ -1,4 +1,4 @@
----
+--
 title: "Analysis of COVID-era Apple Mobility Data"
 author: "Marta Bogaczynska" 
 co-author: "Jacklyn Cherry"
