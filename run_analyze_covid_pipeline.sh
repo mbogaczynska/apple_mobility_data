@@ -28,4 +28,3 @@ RMD_PARAMS="params = list(state = '$1', data = '$2', seqdata = '$3')"
 RMD_OUTPUT="output_dir = 'output', output_file = 'Analysis_$state'"
 
 Rscript -e "rmarkdown::render('Analysis.Rmd', $RMD_PARAMS, $RMD_OUTPUT)"
-
