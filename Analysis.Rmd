@@ -9,7 +9,9 @@ params:
   state: "California"
   data: "data/raw_data/applemobilitytrends-2020-10-03.csv"
   seqdata: "output/sequence_summary.txt"
+  data: "data/raw_data/applemobilitytrends-2020-10-03.csv" 
 ---
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 ```
@@ -26,6 +28,7 @@ state_no_spaces <- gsub(state_to_analyze,
                         replacement = "_")
 # set the name of the global data file to use
 global_file_name_to_process <- params$data
+
 #extract out the core name for output file naming
 core_name <- tools::file_path_sans_ext(basename(global_file_name_to_process))
 ```
