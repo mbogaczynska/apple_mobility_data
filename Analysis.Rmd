@@ -156,14 +156,14 @@ seqs_by_country <- readr::read_table(params$seqdata,
                                                    "country"))
 
 # check that we have the right number of columns
-stopifnot(ncol(seqs_by_counry) == 2)
+stopifnot(ncol(seqs_by_country) == 2)
 
 # make a sideways barplot, log scale x axis, with countries on the y
 # and the counts of sequences in each of the x, sorted by count
 seq_count_plot <- ggplot(data = seqs_by_country,
                          aes(x = count,
                              y = reorder(country, count))) +
-  geomcol() +
+  geom_col() +
   scale_x_log10() +
   labs(title = "Count of SARS-CoV-2 sequences per country",
        x = "Count of sequences",
