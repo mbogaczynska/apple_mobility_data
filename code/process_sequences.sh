@@ -12,7 +12,7 @@ set -euo pipefail
 
 if [ $# -eq 0 ]
 then
-  echo "To run this script, supply one argument:"
+  echo "To run this script, supply two arguments:"
   echo "The first is the compressed fasta sequencing file."
   echo "The second is ALL and will display additional output"
   exit 1
