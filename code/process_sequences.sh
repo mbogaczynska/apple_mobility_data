@@ -15,7 +15,6 @@ then
   echo "To run this script, supply two arguments:"
   echo "The first is the compressed fasta sequencing file."
   echo "The second is ALL and will display additional output"
-  exit 1
 fi
 
 fastafile="$1"
