@@ -27,12 +27,3 @@ then
  bioawk -c fastx '{print $comment}' "$fastafile" | cut -d "|" -f 3 | sort | uniq -c | sort -rn
 fi
 
-
-if [ "$2" = "ALL" ]
-then
-# The number of sequences should be 28843 
-  echo "This is the number of sequences in the fasta file" 
-  zcat "$fastafile" | grep -c "^>"
-
-  bioawk -c fastx '{print $comment}' "$fastafile" | cut -d "|" -f 3 | sort | uniq -c | sort -rn 
-fi
