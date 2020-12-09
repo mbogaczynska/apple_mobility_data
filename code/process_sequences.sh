@@ -12,16 +12,13 @@ set -euo pipefail
 
 if [ $# -eq 0 ]
 then
-  echo "To run this script, supply two arguments:"
+  echo "To run this script, supply one arguments:"
   echo "The first is the compressed fasta sequencing file."
-  echo "The second is ALL and will display additional output"
 fi
 
 fastafile="$1"
 
 if [ $# -eq 1 ]
-
-
 
 then
  bioawk -c fastx '{print $comment}' "$fastafile" | cut -d "|" -f 3 | sort | uniq -c | sort -rn
