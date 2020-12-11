@@ -390,6 +390,7 @@ state_no_spaces &lt;- gsub(state_to_analyze,
                         replacement = &quot;_&quot;)
 # set the name of the global data file to use
 global_file_name_to_process &lt;- params$data
+
 #extract out the core name for output file naming
 core_name &lt;- tools::file_path_sans_ext(basename(global_file_name_to_process))</code></pre>
 <pre class="r"><code># load the packages needed
@@ -565,7 +566,9 @@ seqs_by_country &lt;- readr::read_table(params$seqdata,
 ##   country = col_character()
 ## )</code></pre>
 <pre class="r"><code># check that we have the right number of columns
+
 stopifnot(ncol(seqs_by_country) == 2)
+
 
 # make a sideways barplot, log scale x axis, with countries on the y
 # and the counts of sequences in each of the x, sorted by count
@@ -573,6 +576,7 @@ seq_count_plot &lt;- ggplot(data = seqs_by_country,
                          aes(x = count,
                              y = reorder(country, count))) +
   geom_col() +
+
   scale_x_log10() +
   labs(title = &quot;Count of SARS-CoV-2 sequences per country&quot;,
        x = &quot;Count of sequences&quot;,
@@ -597,7 +601,7 @@ ggsave(plot = seq_count_plot,
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Etc/UTC                     
-##  date     2020-12-09                  
+##  date     2020-12-11                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────
 ##  package     * version date       lib source        
