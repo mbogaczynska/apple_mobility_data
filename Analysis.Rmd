@@ -8,8 +8,7 @@ bibliography: references.bib
 params: 
   state: "California"
   data: "data/raw_data/applemobilitytrends-2020-10-03.csv"
-  seqdata: "output/sequence_summary.txt"
-  data: "data/raw_data/applemobilitytrends-2020-10-03.csv" 
+  seqdata: "output/sequence_summary.txt" 
 
 ---
 
