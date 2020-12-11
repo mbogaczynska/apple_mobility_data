@@ -12,8 +12,9 @@ set -euo pipefail
 
 if [ $# -eq 0 ]
 then
-  echo "To run this script, supply one arguments:"
+  echo "To run this script, supply two arguments:"
   echo "The first is the compressed fasta sequencing file."
+  echo "The second is ALL and will display additional output"
 fi
 
 fastafile="$1"
@@ -24,3 +25,11 @@ then
  bioawk -c fastx '{print $comment}' "$fastafile" | cut -d "|" -f 3 | sort | uniq -c | sort -rn
 fi
 
+if [ "$2" = "ALL" ]
+then
+# The number of sequences should be 28843 
+  echo "This is the number of sequences in the fasta file" 
+  zcat "$fastafile" | grep -c "^>"
+
+  bioawk -c fastx '{print $comment}' "$fastafile" | cut -d "|" -f 3 | sort | uniq -c | sort -rn 
+fi
